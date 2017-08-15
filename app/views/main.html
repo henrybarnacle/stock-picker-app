@@ -1,0 +1,11 @@
+<div class="jumbotron">
+ 
+  <h1>Investments</h1>
+    <input type="text" ng-model="stock" placeholder="enter stock code">
+    <button ng-click="getQuandl()" ng-disabled="stock == null">get price</button>
+
+    <h2>{{main.current}}</h2>
+    <h2>{{main.week}}</h2>
+    <h2>{{main.month}}</h2>
+    <h2>{{main.year}}</h2>
+</div>
