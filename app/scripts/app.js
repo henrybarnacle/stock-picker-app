@@ -19,4 +19,9 @@ angular
   		templateUrl: 'views/main.html',
   		controller: 'MainCtrl as home'
   	})
+  	 	.state('about', {
+  		url: '/about',
+  		templateUrl: 'views/about.html',
+  		controller: 'AboutCtrl as about'
+  	})
 }]);

@@ -7,15 +7,9 @@
  * Controller of the stockPickerAppApp
  */
 angular.module('stockPickerAppApp').controller('MainCtrl', function($scope) {
+
 	$scope.stock = null;
 	$scope.getQuandl = function() {
-		var latest = '';
-		var pastWeek = ''
-		var pastMonth = '';
-		var past12Months = '';
-		var weekChange = '';
-		var monthChange = '';
-		var yearChange = '';
 		var symbol = $scope.stock;
 		var quandlUrl = 'https://www.quandl.com/api/v3/datasets/WIKI/' + symbol + '/data.json?api_key=axPmiG5ZrkVbD7Q82qvA';
 		$.ajax({
@@ -23,15 +17,13 @@ angular.module('stockPickerAppApp').controller('MainCtrl', function($scope) {
 			cache: true,
 			dataType: 'json'
 		}).done(function(results) {
-			latest = results.dataset_data.data[0][1];
-			pastWeek = results.dataset_data.data[5][1];
-			pastMonth = results.dataset_data.data[20][1];
-			past12Months = results.dataset_data.data[240][1];
-			weekChange = (latest - pastWeek) / (pastWeek / 100);
-			monthChange = (latest - pastMonth) / (pastMonth / 100);
-			yearChange = (latest - past12Months) / (past12Months / 100);
-			console.log("1 done");
-		}).done(function(response) {
+		   var latest = results.dataset_data.data[0][1];
+			var pastWeek = results.dataset_data.data[5][1];
+			var pastMonth = results.dataset_data.data[20][1];
+			var past12Months = results.dataset_data.data[240][1];
+			var weekChange = (latest - pastWeek) / (pastWeek / 100);
+			var monthChange = (latest - pastMonth) / (pastMonth / 100);
+			var yearChange = (latest - past12Months) / (past12Months / 100);
 			var aString = symbol + " is priced at $" + latest + " as of last closing.";
 			var bString = "This represents a change of:";
 			var cString = weekChange.toFixed(2) + "% over the past week.";
@@ -41,8 +33,18 @@ angular.module('stockPickerAppApp').controller('MainCtrl', function($scope) {
 			$scope.b = bString;
 			$scope.c = cString;
 			$scope.d = dString;
-			$scope.e = eString;
+			$scope.e = eString;3
 			$scope.$apply();
+				$(document).ready(function() {
+					$("#result1:contains('-')").addClass('red').removeClass('green');
+					$("#result1:not(:contains('-'))").addClass('green').removeClass('red');
+					$("#result2:contains('-')").removeClass('green').addClass('red');
+					$("#result2:not(:contains('-'))").removeClass('red').addClass('green');
+					$("#result3:contains('-')").removeClass('green').addClass('red');
+					$("#result3:not(:contains('-'))").removeClass('red').addClass('green');
+  		
+	});
+	
 		}).fail(function(jqXHR, textStatus) {
 			alert('Nothing Found!');
 		});
