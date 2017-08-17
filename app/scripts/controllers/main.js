@@ -8,6 +8,13 @@
  */
 angular.module('stockPickerAppApp').controller('MainCtrl', function($scope) {
 
+var $body = $("body");
+
+$(document).on({
+    ajaxStart: function() { $body.addClass("loading");    },
+     ajaxStop: function() { $body.removeClass("loading"); }    
+});
+
 	$scope.stock = null;
 	$scope.getQuandl = function() {
 		var symbol = $scope.stock;

@@ -28,7 +28,36 @@ body {
 .green {
   color: green;
 }
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('ajax-loader.gif') 
+                50% 50% 
+                no-repeat;
+}
 
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -39,6 +68,8 @@ body {
 
 /* Custom page header */
 .header {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
   border-bottom: transparent;
   margin-bottom: 10px;
 }
@@ -63,10 +94,14 @@ body {
 
 /* Main marketing message and sign up button */
 .jumbotron {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
   text-align: center;
   
 }
 .jumbotron h1 {
+  font-weight: 400;
   padding-bottom: 20px;
 }
 .jumbotron .btn {
