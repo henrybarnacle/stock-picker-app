@@ -1,7 +1,9 @@
 # stock-picker-app
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.16.0.
+A simple stock info app. Users can search publicly traded stocks by their relevant stock code in the search bar
+The app returns last closing price and past week, month and year performance, color coded for positive/negative results.
+Built using the Angular framework with Bootstrap and ajax to pull stock information from the Quandl API.
+
 
 ## Build & development
 
